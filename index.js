@@ -33,7 +33,7 @@ const cats = [
 
 
 const server = http.createServer((req, res) => {
-if (req.url === "https://andreyzarev.github.io/catSchelter/") {
+if (req.url === "/") {
     res.writeHead(200, {
         "content-type": 'text/html',
     })
