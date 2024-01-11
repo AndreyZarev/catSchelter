@@ -3,7 +3,17 @@ const homePage = require('./views/home.js');
 const cssTemplate = require('./styles/site.css.js')
 const addCatHtml = require("./views/addCat.js")
 const addBreedHtml = require("./views/addBreed.js")
+const cats = [
 
+    {
+        id: 1,
+        name: "John",
+        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLjisGy4eY5ZkfsZAmtRQ-4MstK4DapAPegcL52fG10g&s",
+        breed: "persian",
+        description: "Very fluffy cats indeed.",
+
+    }
+]
 
 
 const server = http.createServer((req, res) => {
