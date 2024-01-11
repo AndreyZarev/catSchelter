@@ -1,4 +1,4 @@
-module.exports = `
+module.exports = (cats) => `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +42,7 @@ module.exports = `
     <li class="btn delete"><a href="">New Home</a></li>
 </ul>
 
-           `)}
+           `).join("")}
             </ul>
         </section>
     </main>

@@ -12,6 +12,22 @@ const cats = [
         breed: "persian",
         description: "Very fluffy cats indeed.",
 
+    },
+    {
+        id: 2,
+        name: "Jessy",
+        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLjisGy4eY5ZkfsZAmtRQ-4MstK4DapAPegcL52fG10g&s",
+        breed: "SM",
+        description: "Very smart cat,lol.",
+
+    },
+    {
+        id: 3,
+        name: "Wendy",
+        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLjisGy4eY5ZkfsZAmtRQ-4MstK4DapAPegcL52fG10g&s",
+        breed: "Russian",
+        description: "Cold resistant",
+
     }
 ]
 
@@ -21,7 +37,7 @@ if (req.url === "/") {
     res.writeHead(200, {
         "content-type": 'text/html',
     })
-    res.write(homePage)
+    res.write(homePage(cats))
     res.end()
 
     //----------------------------------------------------------------
