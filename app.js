@@ -1,5 +1,6 @@
 const addCatForm = document.getElementById("addCatForm");
-addCatForm.addEventListener("submit", () => {
+addCatForm.addEventListener("submit", (e) => {
+    e.preventDefault();
     const data = FormData(addCatForm)
     debugger
     console.log(data.name);
