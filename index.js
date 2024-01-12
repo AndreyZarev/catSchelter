@@ -31,6 +31,45 @@ const cats = [
     }
 ]
 
+//----------------------------------------------------------------
+
+
+
+const postData = JSON.stringify({
+  key1: 'value1',
+  key2: 'value2',
+});
+
+const options = {
+  hostname: 'example.com',
+  port: 80,
+  path: '/api/endpoint',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Content-Length': postData.length,
+  },
+};
+
+const req = http.request(options, (res) => {
+  let data = '';
+
+  res.on('data', (chunk) => {
+    data += chunk;
+  });
+
+  res.on('end', () => {
+    console.log('Response:', data);
+  });
+});
+//init - y
+req.on('error', (error) => {
+  console.error('Error:', error.message);
+});
+
+req.write(postData);
+req.end();
+  //--------------------------------------------------------------
 
 const server = http.createServer((req, res) => {
 if (req.url === "/") {
@@ -68,6 +107,14 @@ res.end()
     //----------------------------------------------------------------
 
 } else if(req.url === "/cats/add-breed"){
+    res.writeHead(200, {"content-type": "text/html"
+})
+res.write(addBreedHtml)
+res.end()
+
+  //----------------------------------------------------------------
+
+} else if(req.url === "http://localhost:5000/cats/submit?name=saddsad&description=cxz&upload=cxz&breed=Fluffy+Cat"){
     res.writeHead(200, {"content-type": "text/html"
 })
 res.write(addBreedHtml)
