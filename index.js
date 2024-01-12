@@ -62,7 +62,7 @@ const req = http.request(options, (res) => {
     console.log('Response:', data);
   });
 });
-//init - you can
+//init - you can do it
 req.on('error', (error) => {
   console.error('Error:', error.message);
 });
