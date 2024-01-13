@@ -48,11 +48,11 @@ res.end()
   
 
     //----------------------------------------------------------------
-} else if (req.url === "/styles/site.css") {
-    res.writeHead(200, {"content-type": "text/css"
-})
-res.write(cssTemplate)
-res.end()
+// } else if (req.url === "/styles/site.css") {
+//     res.writeHead(200, {"content-type": "text/css"
+// })
+// res.write(cssTemplate)
+// res.end()
 
     //----------------------------------------------------------------
  
