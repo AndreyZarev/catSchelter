@@ -1,8 +1,6 @@
 const http = require('http')
-const homePage = require('./views/home.js');
-const cssTemplate = require('./styles/site.css.js')
-const addCatHtml = require("./views/addCat.js")
-const addBreedHtml = require("./views/addBreed.js")
+const fs = require('fs')
+
 const cats = [
 
     {
@@ -31,53 +29,23 @@ const cats = [
     }
 ]
 
-//----------------------------------------------------------------
 
-
-
-const postData = JSON.stringify({
-  key1: 'value1',
-  key2: 'value2',
-});
-
-const options = {
-  hostname: 'example.com',
-  port: 80,
-  path: '/api/endpoint',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Content-Length': postData.length,
-  },
-};
-
-const req = http.request(options, (res) => {
-  let data = '';
-
-  res.on('data', (chunk) => {
-    data += chunk;
-  });
-
-  res.on('end', () => {
-    console.log('Response:', data);
-  });
-});
-//init - you can do it
-req.on('error', (error) => {
-  console.error('Error:', error.message);
-});
-
-req.write(postData);
-req.end();
   //--------------------------------------------------------------
 
 const server = http.createServer((req, res) => {
 if (req.url === "/") {
-    res.writeHead(200, {
-        "content-type": 'text/html',
+    fs.readFile('./views/home.html', {encoding: "utf-8"}, (err, result) => {
+if (err) {
+    res.statusCode = 404;
+    return res.end();
+}
+res.writeHead(200, {
+    "content-type": 'text/html',
+})
+res.write(result)
+res.end()
     })
-    res.write(homePage(cats))
-    res.end()
+  
 
     //----------------------------------------------------------------
 } else if (req.url === "/styles/site.css") {
