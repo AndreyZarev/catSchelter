@@ -29,12 +29,19 @@ const cats = [
     }
 ]
 
+//----------------------------------------------------------------
+
+const views = {
+    home : "./views/home.html",
+    style : "./styles/site.css",
+}
+
 
   //--------------------------------------------------------------
 
 const server = http.createServer((req, res) => {
 if (req.url === "/") {
-    fs.readFile('./views/home.html', {encoding: "utf-8"}, (err, result) => {
+    fs.readFile(views.home , {encoding: "utf-8"}, (err, result) => {
 if (err) {
     res.statusCode = 404;
     return res.end();
@@ -47,21 +54,20 @@ res.end()
     })
   
 
-    //----------------------------------------------------------------
-// } else if (req.url === "/styles/site.css") {
-//     res.writeHead(200, {"content-type": "text/css"
-// })
-// res.write(cssTemplate)
-// res.end()
-
-    //----------------------------------------------------------------
+ //--------------------------------------------------------------
  
-} else if (req.url === "/cats/styles/site.css") {
+} else if (req.url === "/styles/site.css") {
+    fs.readFile(views.style , "utf-8", (err, result) => {
+        if (err) {
+            res.statusCode = 404;
+            return res.end();
+        }
+       
     res.writeHead(200, {"content-type": "text/css"
 })
-res.write(cssTemplate)
+res.write(result)
 res.end()
-
+    });
     //----------------------------------------------------------------
  
 }
@@ -82,12 +88,7 @@ res.end()
 
   //----------------------------------------------------------------
 
-} else if(req.url === "http://localhost:5000/cats/submit?name=saddsad&description=cxz&upload=cxz&breed=Fluffy+Cat"){
-    res.writeHead(200, {"content-type": "text/html"
-})
-res.write(addBreedHtml)
-res.end()
-}
+} 
 })
 server.listen(5000)
 
