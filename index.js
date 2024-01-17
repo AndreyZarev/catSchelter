@@ -38,7 +38,7 @@ const views = {
     singleCat : "./views/singleCat.html",
 }
 
-//will be adding in 
+//will be adding in the Expres server rendering framework
   //--------------------------------------------------------------
 
 const server = http.createServer((req, res) => {
